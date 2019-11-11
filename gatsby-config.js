@@ -13,16 +13,23 @@ module.exports = {
   //   }
   // }
   siteMetadata: {
-    title: `Some other title`,
+    title: `Some other title`
   },
   plugins: [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
-        path: `${__dirname}/src/`,
-      },
+        path: `${__dirname}/src/`
+      }
     },
-    `gatsby-transformer-remark`,
-  ],
-}
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `testComponent`,
+        path: `${__dirname}src/`
+      }
+    },
+    `gatsby-transformer-remark`
+  ]
+};
