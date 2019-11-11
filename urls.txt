@@ -1,0 +1,4 @@
+Gatsby Browser APIs: https://www.gatsbyjs.org/docs/browser-apis/
+
+for graphQl: npm install --save gatsby-source-filesystem
+for md-files: npm install --save gatsby-transformer-remark
