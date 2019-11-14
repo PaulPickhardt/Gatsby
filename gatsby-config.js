@@ -23,13 +23,6 @@ module.exports = {
         path: `${__dirname}/src/`
       }
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `testComponent`,
-        path: `${__dirname}src/`
-      }
-    },
     `gatsby-transformer-remark`
   ]
 };

@@ -1,10 +1,10 @@
 import React from "react";
 
 export default props => {
-  if (props && props.headline) {
+  if (props && props.data) {
     return (
       <div>
-        <h1>{props.headline}</h1>
+        <h1>{props.data}</h1>
       </div>
     );
   } else {

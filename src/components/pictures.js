@@ -1,10 +1,10 @@
 import React from "react";
 
 export default props => {
-  if (props && props.pictures) {
+  if (props && props.data) {
     return (
       <div>
-        {props.pictures.map(picture => {
+        {props.data.map(picture => {
           return (
             <div>
               <img src={picture} />

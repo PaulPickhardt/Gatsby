@@ -1,6 +1,0 @@
----
-title: "headline"
-
----
-
-Test Headline
