@@ -4,5 +4,5 @@ component: "Pictures"
 id: "mdComponentTest"
 ---
 
-picture1:=>./gatsby-astronaut.png
-picture2:=>./gatsby-icon.png
+../markdownfiles/mdComponentTest/gatsby-astronaut.png
+../markdownfiles/mdComponentTest/gatsby-icon.png

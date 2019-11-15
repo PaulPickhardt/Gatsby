@@ -47,18 +47,28 @@ export default props => {
     const order = dataDict["master"]["excerpt"].split("-");
     for (const component of order) {
       const tmp = dataDict[component];
-      React.lazy(() =>
+      console.log(
+        tmp["component"].substring(0, 1).toLowerCase() +
+          tmp["component"].substring(1)
+      );
+      // gives us the react component
+      const componentToLoad = React.lazy(() =>
         import(
           "../components/" +
             tmp["component"].substring(0, 1).toLowerCase() +
             tmp["component"].substring(1)
         )
       );
-      const element = React.createElement(tmp["component"], {
-        data: tmp["excerpt"]
-      });
+
+      const element = React.createElement(
+        componentToLoad,
+        {
+          data: tmp["excerpt"]
+        },
+        null
+      );
       console.log(React.isValidElement(element));
-      fragment.push({ __html: element });
+      fragment.push(element);
     }
     console.log(fragment);
   }
@@ -66,13 +76,7 @@ export default props => {
   return (
     <div>
       <Header headerText={"MD Test"} />
-      <Suspense fallback={<div>loading...</div>}>
-        {fragment &&
-          fragment.map((component, index) => {
-            console.log(component);
-            return <div key={index} dangerouslySetInnerHTML={component} />;
-          })}
-      </Suspense>
+      <Suspense fallback={<div>loading...</div>}>{fragment}</Suspense>
     </div>
   );
 };
