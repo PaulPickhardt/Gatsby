@@ -12,6 +12,7 @@ function extractQuery(query) {
         frontMatterData[fmKey] = md.frontmatter[fmKey];
       }
       frontMatterData["excerpt"] = md.excerpt;
+      frontMatterData["html"] = md.html;
       filterData[md.frontmatter.title] = frontMatterData;
     }
   }
@@ -35,6 +36,7 @@ export default props => {
               component
             }
             excerpt
+            html
           }
         }
       }
@@ -63,7 +65,7 @@ export default props => {
       const element = React.createElement(
         componentToLoad,
         {
-          data: tmp["excerpt"]
+          data: tmp["html"]
         },
         null
       );
@@ -74,7 +76,7 @@ export default props => {
   }
 
   return (
-    <div>
+    <div className="container">
       <Header headerText={"MD Test"} />
       <Suspense fallback={<div>loading...</div>}>{fragment}</Suspense>
     </div>

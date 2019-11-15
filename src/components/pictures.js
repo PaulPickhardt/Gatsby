@@ -1,4 +1,5 @@
 import React from "react";
+import picture from "./gatsby-astronaut.png";
 
 export default props => {
   if (props && props.data) {
@@ -15,7 +16,7 @@ export default props => {
               </div>
             );
           })}
-        <img src="gatsby-astronaut.png" alt={"test"} />
+        <img src={picture} alt={"test"} />
       </div>
     );
   }

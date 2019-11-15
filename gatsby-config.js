@@ -16,13 +16,13 @@ module.exports = {
     title: `Some other title`
   },
   plugins: [
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
         path: `${__dirname}/src/`
       }
-    },
-    `gatsby-transformer-remark`
+    }
   ]
 };
