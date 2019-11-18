@@ -62,15 +62,28 @@ export default props => {
         )
       );
 
-      const element = React.createElement(
-        componentToLoad,
-        {
-          data: tmp["html"]
-        },
-        null
-      );
+      let element = null;
+      if (component === "headlineWithTeaser1") {
+        element = React.createElement(
+          componentToLoad,
+          {
+            data: tmp["excerpt"]
+          },
+          null
+        );
+      } else {
+        element = React.createElement(
+          componentToLoad,
+          {
+            data: tmp["html"]
+          },
+          null
+        );
+      }
       console.log(React.isValidElement(element));
-      fragment.push(element);
+      if (React.isValidElement(element)) {
+        fragment.push(element);
+      }
     }
     console.log(fragment);
   }

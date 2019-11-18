@@ -1,5 +1,4 @@
 import React from "react";
-import picture from "./gatsby-astronaut.png";
 import { useStaticQuery } from "gatsby";
 
 export default props => {
@@ -29,7 +28,6 @@ export default props => {
               </div>
             );
           })}
-        <img src={picture} alt={"test"} />
       </div>
     );
   }

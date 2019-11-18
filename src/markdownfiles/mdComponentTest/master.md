@@ -3,4 +3,4 @@ title: "master"
 id: "mdComponentTest"
 ---
 
-headline-textBlock-pictures-textBlock2
+headline-textBlock-pictures-textBlock2-headlineWithTeaser
