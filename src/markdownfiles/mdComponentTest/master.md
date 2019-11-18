@@ -1,6 +1,5 @@
 ---
 title: "master"
 id: "mdComponentTest"
+order: "headline,headlineWithTeaser,textBlock,pictures,textBlock2"
 ---
-
-headline-textBlock-pictures-textBlock2-headlineWithTeaser

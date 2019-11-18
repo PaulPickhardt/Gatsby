@@ -1,15 +1,15 @@
-import React from "react"
-import Header from "../components/header"
-import { graphql } from "gatsby"
-import getAllMarkDowns from "../actions/getAllMarkDowns"
-import getAllMarkDowns2 from "../actions/getAllMarkDowns2"
+import React from "react";
+import Header from "../components/header";
+import { graphql } from "gatsby";
+import getAllMarkDowns from "../actions/getAllMarkDowns";
+import getAllMarkDowns2 from "../actions/getAllMarkDowns2";
 
 export default ({ data }) => {
-  console.log(data)
-  const test = getAllMarkDowns
-  const test2 = getAllMarkDowns2()
-  console.log(test)
-  console.log(test2)
+  console.log(data);
+  const test = getAllMarkDowns;
+  const test2 = getAllMarkDowns2();
+  console.log(test);
+  console.log(test2);
   return (
     <div>
       <Header headerText={"Hello Gatsby!"} />
@@ -26,8 +26,8 @@ export default ({ data }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 export const query = graphql`
   query {
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -44,4 +44,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

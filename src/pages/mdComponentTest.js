@@ -7,13 +7,19 @@ function extractQuery(query) {
   for (const node of query) {
     const frontMatterData = {};
     const md = node.node;
-    if (md.frontmatter && md.frontmatter.title && md.excerpt) {
+    if (md.frontmatter && md.frontmatter.title) {
       for (const fmKey of Object.keys(md.frontmatter)) {
         frontMatterData[fmKey] = md.frontmatter[fmKey];
       }
       frontMatterData["excerpt"] = md.excerpt;
       frontMatterData["html"] = md.html;
-      filterData[md.frontmatter.title] = frontMatterData;
+      if (md.frontmatter.parent) {
+        filterData[
+          md.frontmatter.parent + "/" + md.frontmatter.title
+        ] = frontMatterData;
+      } else {
+        filterData[md.frontmatter.title] = frontMatterData;
+      }
     }
   }
   return filterData;
@@ -34,6 +40,8 @@ export default props => {
               id
               title
               component
+              order
+              parent
             }
             excerpt
             html
@@ -46,7 +54,8 @@ export default props => {
   if (props.data.allMarkdownRemark && props.data.allMarkdownRemark.edges) {
     const dataDict = extractQuery(props.data.allMarkdownRemark.edges);
     console.log(dataDict);
-    const order = dataDict["master"]["excerpt"].split("-");
+    const order = dataDict["master"]["order"].split(",");
+    console.log(order);
     for (const component of order) {
       const tmp = dataDict[component];
       console.log(
@@ -63,14 +72,22 @@ export default props => {
       );
 
       let element = null;
-      if (component === "headlineWithTeaser1") {
-        element = React.createElement(
-          componentToLoad,
-          {
-            data: tmp["excerpt"]
-          },
-          null
-        );
+      const childs = [];
+      Object.keys(dataDict).forEach(md => {
+        if (
+          dataDict[md].parent &&
+          dataDict[md].parent.localeCompare(tmp["title"]) === 0
+        ) {
+          childs.push(dataDict[md]);
+        }
+      });
+      console.log(childs);
+      if (childs.length > 0) {
+        const props = {};
+        for (const child of childs) {
+          props[child["title"]] = child["html"];
+        }
+        element = React.createElement(componentToLoad, props, null);
       } else {
         element = React.createElement(
           componentToLoad,
